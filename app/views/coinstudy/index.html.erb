@@ -1,0 +1,15 @@
+<p>
+
+  <div>
+      <p>検索したキーワード : <%= @keyword %></p>
+    <% @events.each do |event| %>
+      <p><%= event['title'] %></p>
+      <p><%= @params %></p>
+      <p><%= event['started_at'] %></p>
+      <p><link  href="{{"<%= event['event_url'] %>"}}"></p>
+    <% end %>
+  </div>
+</p>
+  <!-- エラーメッセージを表示-->
+message: <%= @message%>
+</p>
