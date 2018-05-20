@@ -4,19 +4,32 @@
   <title>Coinstudy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Materialize CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-   検索したいキーワード▽
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to "Coinstudy", root_path, class: :"brand-logo right" %>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><%= link_to "About ", root_path, class: :"b" %></li>
+        <li><%= link_to "Login", root_path, class: :"b" %></li>
+        <li><%= link_to "Hi ", root_path, class: :"b" %></li>
+      </ul>
+    </div>
+  </nav>
   <div class="search-keyword">
-   <%= form_tag('/', method: 'get') do  %>
-      <p><%= label :keyword,params[:keyword], "Keyword"%>
-      <%= text_field_tag  :keyword %></p>
+    <%= form_tag('/', method: 'get') do  %>
+      <div >
+        <%= label :keyword,params[:keyword], "Keyword to search"%>
+        <%= text_field_tag  :keyword %>
 
-      <p><%= label :date,params[:date],"Date"%>
-      <%=  date_field_tag  :date %></p>
-
-      <%= submit_tag "Serch"%>
+        <%= label :date,params[:date],"Date you wanna find"%>
+        <%=  date_field_tag  :date %>
+     </div>
+    <%= submit_tag "Serch"%>
 
 
     <% end %>
