@@ -1,5 +1,9 @@
   <div>
     <p>検索したキーワード : <%= @keyword %></p>
+    <p>Eventon: <%= @eventonnumber %></p>
+    <p>Connmapss: <%= @connpassnumber  %></p>
+    <p>Atnd: <%= @atndnumber %></p>
+    <p>Doorkeeper: <%= @doorkeepernumber %></p>
 
     <% @events.each do |event| %>
       <div class="row event-card">
@@ -10,11 +14,13 @@
         <div class="col s12 m9 l8">
           <div class="card white-gray darken-1 card-panel hoverable">
             <div class="card-content grey-text">
-              <span class="card-title"><%= event['title'] %></span>
+              <span class="card-title">
+                <%= event['title'] %>
+              </span>
               <p><%= event['started_at'] %></p>
             </div>
             <div class="card-action">
-              <link  href="{{"<%= event['event_url'] %>"}}">
+              <%= link_to "ページに移動する", "#{event['event_url']}" %>
             </div>
           </div>
         </div>

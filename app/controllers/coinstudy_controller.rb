@@ -56,20 +56,20 @@ class CoinstudyController < ApplicationController
     end
 
   #eventonからの取得
-    def eventon(ym, word)
-      result = get_json("https://eventon.jp/api/events.json?prefecture_id=32&ym=#{ym}&limit=100")
-      puts "eventon #{result["count"]}"
-      infos = []
-      result["events"].each do |val|
-        infos << {
-          "title" => val["title"],
-          "started_at" => val["started_at"],
-          "event_url" => val["event_url"],
-          "address" => val["address"] + " " + val["place"]
-        }
-      end
-      return infos
-    end
+    # def eventon(ym, word)
+    #   result = get_json("https://eventon.jp/api/events.json?keyword=#{word}&ym=#{ym}&limit=100")
+    #   puts "eventon #{result["count"]}"
+    #   infos = []
+    #   result["events"].each do |val|
+    #     infos << {
+    #       "title" => val["title"],
+    #       "started_at" => val["started_at"],
+    #       "event_url" => val["event_url"],
+    #       "address" => val["address"] + " " + val["place"]
+    #     }
+    #   end
+    #   return infos
+    # end
 
   #atndからの取得
     def atnd(ym, word)
@@ -111,7 +111,8 @@ class CoinstudyController < ApplicationController
       puts "[#{ym}]"
 
       infos = []
-      infos += eventon(ym, word)
+      eventonnumber =
+      # infos += eventon(ym, word)
       infos += doorkeeper(year, month, word)
       infos += connpass(ym, word)
       infos += atnd(ym, word)
@@ -120,6 +121,10 @@ class CoinstudyController < ApplicationController
       puts "Total #{infos.length}"
       return infos
     end
+    # @eventonnumber = eventon(2018/5, keyword).length
+    @connpassnumber = connpass(2018/5, keyword).length
+    @doorkeepernumber = doorkeeper(2018,5, keyword).length
+    @atndnumber = atnd(2018/5,keyword).length
     @keyword = keyword
     @events = get_events(2018, 5, keyword)
   end

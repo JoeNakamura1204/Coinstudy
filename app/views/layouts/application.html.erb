@@ -2,12 +2,14 @@
 <html>
 <head>
   <title>Coinstudy</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- Materialize CDN -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -34,9 +36,12 @@
           <div class="input-field col s4 search" >
             <i class="material-icons prefix">schedule</i>
             <%= label :date,params[:date],"Date you wanna find",class:"datepicker"%>
-            <%=  date_field_tag  :date %>
+            <%=  text_field_tag  :date %>
           </div>
             <%= submit_tag "Serch", class:"waves-effect waves-light btn"%>
+            <div id="app">
+              {{ message }}
+            </div>
           </div>
 
       <% end %>
@@ -44,6 +49,18 @@
   </div>
 
 <%= yield %>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, format);
+  });
 
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</script>
 </body>
 </html>
