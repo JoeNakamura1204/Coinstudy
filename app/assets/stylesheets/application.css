@@ -13,7 +13,45 @@
  *= require_tree .
  *= require_self
  */
+body{
+  padding: 3rem;
+}
+/* navbar */
+
+.brand-logo.right{
+  margin-right: 2rem;
+}
+
+.left.hide-on-med-and-down > li >a{
+  padding: 0 2rem;
+}
+.row.search{
+  display: flex;
+}
+
+.row.event-card{
+  position: relative;
+  display: block;
+  margin:0 auto;
+}
 
 .nav-wrapper{
- background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.col.s12.m6.event-card{
+  margin:0 auto;
+}
+.input-field.col.s4.search{
+  margin-left:2rem;
+  margin-top:5rem;
+}
+#serch-field{
+   margin-left:7rem;
+}
+.waves-effect.waves-light.btn{
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  position: relative;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }

@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- Materialize CDN -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
@@ -14,25 +15,32 @@
     <div class="nav-wrapper">
       <%= link_to "Coinstudy", root_path, class: :"brand-logo right" %>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><%= link_to "About ", root_path, class: :"b" %></li>
-        <li><%= link_to "Login", root_path, class: :"b" %></li>
-        <li><%= link_to "Hi ", root_path, class: :"b" %></li>
+        <li><%= link_to "About ", root_path, class: :"" %></li>
+        <li><%= link_to "Login", root_path, class: :"" %></li>
+        <li><%= link_to "Hi ", root_path, class: :"" %></li>
       </ul>
     </div>
   </nav>
-  <div class="search-keyword">
-    <%= form_tag('/', method: 'get') do  %>
-      <div >
-        <%= label :keyword,params[:keyword], "Keyword to search"%>
-        <%= text_field_tag  :keyword %>
 
-        <%= label :date,params[:date],"Date you wanna find"%>
-        <%=  date_field_tag  :date %>
-     </div>
-    <%= submit_tag "Serch"%>
+  <div class="row search">
+    <div class="col s12">
+      <%= form_tag('/', method: 'get') do  %>
+        <div class="row center-align">
+          <div class="input-field col s4 search" id="serch-field">
+            <i class="material-icons prefix">textsms</i>
+            <%= label :keyword,params[:keyword], "Keyword to search"%>
+            <%= text_field_tag  :keyword%>
+          </div>
+          <div class="input-field col s4 search" >
+            <i class="material-icons prefix">schedule</i>
+            <%= label :date,params[:date],"Date you wanna find",class:"datepicker"%>
+            <%=  date_field_tag  :date %>
+          </div>
+            <%= submit_tag "Serch", class:"waves-effect waves-light btn"%>
+          </div>
 
-
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
 <%= yield %>
