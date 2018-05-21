@@ -28,7 +28,14 @@ body{
 .row.search{
   display: flex;
 }
-
+.active.waves-effect{
+  vertical-align: middle;
+}
+.current-page{
+  width: 30px;
+  color: white;
+  vertical-align: middle;
+}
 .row.event-card{
   position: relative;
   display: block;

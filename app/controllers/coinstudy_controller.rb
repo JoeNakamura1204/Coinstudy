@@ -126,7 +126,7 @@ class CoinstudyController < ApplicationController
     @doorkeepernumber = doorkeeper(2018,5, keyword).length
     @atndnumber = atnd(2018/5,keyword).length
     @keyword = keyword
-    @events = get_events(2018, 5, keyword)
+    @events = Kaminari.paginate_array(get_events(2018, 5, keyword)).page(params[:page]).per(10)
   end
 
 end
