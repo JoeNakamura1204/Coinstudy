@@ -9,8 +9,9 @@ class CoinstudyController < ApplicationController
   def index
 
     # keyword = params[:keyword]
-    keyword = ["blockchain","dapps"]
+    keyword = "blockchain"
     date = params[:date]
+    now = Time.now
 
     def get_json(url)
       uri = URI.parse(URI.escape(url))
@@ -90,22 +91,6 @@ class CoinstudyController < ApplicationController
       return infos
     end
 
-  #zusaarからの取得
-    # def zusaar(ym, word)
-    #   result = get_json("https://www.zusaar.com/api/event/?ym=#{ym}&count=100&keyword_or=#{word}")
-    #   puts "Zusaar #{result["results_returned"]}"
-    #   infos = []
-    #   result["event"].each do |val|
-    #     infos << {
-    #       "title" => val["title"],
-    #       "started_at" => val["started_at"],
-    #       "event_url" => val["event_url"],
-    #       "address" => val["address"] + " " + val["place"]
-    #     }
-    #   end
-    #   return infos
-    # end
-
   #取得したデータを集約する
    def get_events(year, month, word)
 
@@ -124,9 +109,28 @@ class CoinstudyController < ApplicationController
       return infos
     end
 
+    if date.blank?
+      @now = now
+    else
+      @now = date
+    end
+# 選択されたものを→ date型にする
+    s = @now.to_time
+# sを→string型にする
+    t = s.to_s
+# 西暦と月を出す
+    y = t.split("/")
+    selected_year = y[0].to_i
+    selected_month = y[1].to_i
+
+    if date.blank?
+      @now = now
+    else
+      @now = y[0]
+    end
+
     @keyword = keyword
-    @now = params[:date]
-    @events = Kaminari.paginate_array(get_events(2018, 5, keyword)).page(params[:page]).per(10)
+    @events = Kaminari.paginate_array(get_events(selected_year, selected_month, keyword)).page(params[:page]).per(10)
   end
 
 end

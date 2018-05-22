@@ -57,7 +57,7 @@ body{
 #serch-field{
    margin-left:7rem;
 }
-.waves-effect.waves-light.btn{
+.waves-effect.waves-light.btn-large{
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   position: relative;
   margin-top: 5rem;

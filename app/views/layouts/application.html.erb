@@ -24,41 +24,42 @@
     </div>
   </nav>
 
-     <div class="row search">
-      <div class="col s12">
-        <%= form_tag('/', method: 'get') do  %>
-          <div class="row center-align">
-            <div class="input-field col s4 search" id="serch-field">
-              <i class="material-icons prefix">textsms</i>
-              <%= label :keyword,params[:keyword], "Keyword to search"%>
-              <%= text_field_tag  :keyword%>
-            </div>
-            <div class="input-field col s4 search" >
-              <i class="material-icons prefix">schedule</i>
-              <%= label :date,params[:date],"Date you wanna find"%>
-              <%=  text_field_tag :date,'', class:'datepicker' %>
-            </div>
-              <%= submit_tag "Serch", class:"waves-effect waves-light btn"%>
-              <div id="app">
-                {{ message }}
-              </div>
-            </div>
-        <% end %>
-      </div>
+  <div class="row search">
+    <div class="col s12">
+      <%= form_tag('/', method: 'get') do  %>
+        <div class="row center-align">
+          <div class="input-field col s4 search" id="serch-field">
+            <i class="material-icons prefix">textsms</i>
+            <%= label :keyword,params[:keyword], "Keyword to search"%>
+            <%= text_field_tag  :keyword%>
+          </div>
+          <div class="input-field col s4 search" >
+            <i class="material-icons prefix">schedule</i>
+            <%= label :date,params[:date],"Date you wanna find"%>
+            <%=  text_field_tag :date,'', class:'datepicker' %>
+          </div>
+            <%= submit_tag "Serch", class:"waves-effect waves-light btn-large"%>
+          <div id="app">
+              {{ message }}
+          </div>
+        </div>
+      <% end %>
     </div>
+  </div>
 
 
 
 
 <%= yield %>
 <script>
+  // カレンダー選択の処理
   $(function() {
   var h = $(window).height();
 
   $('#wrap').css('display','none');
   $('#loader-bg ,#loader').height(h).css('display','block');
 });
-
+// ローディングの処理
 $(window).load(function () { //全ての読み込みが完了したら実行
   $('#loader-bg').delay(900).fadeOut(800);
   $('#loader').delay(600).fadeOut(300);

@@ -1,7 +1,7 @@
   <div>
     <p>検索したキーワード : <%= @keyword %></p>
     <p>検索結果: <%= @events.length%>件</p>
-    <p>Time: <%= @now.kind_of?(String) %></p>
+    <p><%= @now %></p>
 
     <div class="col s12 m9 l8" id="loader-bg">
       <div id="loader">
@@ -25,7 +25,7 @@
                   <%= event['title'] %>
                 </span>
                 <p><i class="material-icons prefix">add_location</i><%= event['address'] %></p>
-                <p><i class="material-icons prefix">access_time</i><%= event['started_at'] %></p>
+                <p><i class="material-icons prefix">access_time</i><%= event['started_at'].to_time %></p>
               </div>
               <div class="card-action">
                 <%= link_to "ページに移動する", "#{event['event_url']}" %>
