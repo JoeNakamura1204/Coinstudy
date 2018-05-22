@@ -8,7 +8,8 @@ class CoinstudyController < ApplicationController
 
   def index
 
-    keyword = params[:keyword]
+    # keyword = params[:keyword]
+    keyword = ["blockchain","dapps"]
     date = params[:date]
 
     def get_json(url)
@@ -30,7 +31,8 @@ class CoinstudyController < ApplicationController
           "title" => val["title"],
           "started_at" => val["started_at"],
           "event_url" => val["event_url"],
-          "address" => val["address"]
+          "address" => val["address"],
+          "description" => val["description"]
         }
       end
       return infos
@@ -121,12 +123,14 @@ class CoinstudyController < ApplicationController
       puts "Total #{infos.length}"
       return infos
     end
-    # @eventonnumber = eventon(2018/5, keyword).length
-    @connpassnumber = connpass(2018/5, keyword).length
-    @doorkeepernumber = doorkeeper(2018,5, keyword).length
-    @atndnumber = atnd(2018/5,keyword).length
+
     @keyword = keyword
+    @now = params[:date]
     @events = Kaminari.paginate_array(get_events(2018, 5, keyword)).page(params[:page]).per(10)
   end
 
+end
+
+def about
+  render 'About'
 end

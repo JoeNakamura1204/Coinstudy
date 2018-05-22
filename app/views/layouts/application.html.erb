@@ -17,42 +17,55 @@
     <div class="nav-wrapper">
       <%= link_to "Coinstudy", root_path, class: :"brand-logo right" %>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><%= link_to "About ", root_path, class: :"" %></li>
+        <li><%= link_to "About ", about_path, class: :"" %></li>
         <li><%= link_to "Login", root_path, class: :"" %></li>
         <li><%= link_to "Hi ", root_path, class: :"" %></li>
       </ul>
     </div>
   </nav>
 
-  <div class="row search">
-    <div class="col s12">
-      <%= form_tag('/', method: 'get') do  %>
-        <div class="row center-align">
-          <div class="input-field col s4 search" id="serch-field">
-            <i class="material-icons prefix">textsms</i>
-            <%= label :keyword,params[:keyword], "Keyword to search"%>
-            <%= text_field_tag  :keyword%>
-          </div>
-          <div class="input-field col s4 search" >
-            <i class="material-icons prefix">schedule</i>
-            <%= label :date,params[:date],"Date you wanna find",class:"datepicker"%>
-            <%=  text_field_tag  :date %>
-          </div>
-            <%= submit_tag "Serch", class:"waves-effect waves-light btn"%>
-            <div id="app">
-              {{ message }}
+     <div class="row search">
+      <div class="col s12">
+        <%= form_tag('/', method: 'get') do  %>
+          <div class="row center-align">
+            <div class="input-field col s4 search" id="serch-field">
+              <i class="material-icons prefix">textsms</i>
+              <%= label :keyword,params[:keyword], "Keyword to search"%>
+              <%= text_field_tag  :keyword%>
             </div>
-          </div>
-
-      <% end %>
+            <div class="input-field col s4 search" >
+              <i class="material-icons prefix">schedule</i>
+              <%= label :date,params[:date],"Date you wanna find"%>
+              <%=  text_field_tag :date,'', class:'datepicker' %>
+            </div>
+              <%= submit_tag "Serch", class:"waves-effect waves-light btn"%>
+              <div id="app">
+                {{ message }}
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+
+
 
 <%= yield %>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, format);
+  $(function() {
+  var h = $(window).height();
+
+  $('#wrap').css('display','none');
+  $('#loader-bg ,#loader').height(h).css('display','block');
+});
+
+$(window).load(function () { //全ての読み込みが完了したら実行
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+  $('#wrap').css('display', 'block');
+});
+    $(document).ready(function(){
+    $('.datepicker').datepicker();
   });
 
   var app = new Vue({
