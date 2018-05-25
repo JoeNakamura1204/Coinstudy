@@ -13,44 +13,42 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- nevbar -->
   <nav>
     <div class="nav-wrapper">
-      <%= link_to "Coinstudy", root_path, class: :"brand-logo right" %>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <%= link_to "Coinstudy", root_path, class: :"brand-logo" %>
+      <ul id="nav-mobile" class="right hide-on-med-and-dow">
         <li><%= link_to "About ", about_path, class: :"" %></li>
-        <li><%= link_to "Login", root_path, class: :"" %></li>
         <li><%= link_to "Hi ", root_path, class: :"" %></li>
       </ul>
     </div>
   </nav>
 
-  <div class="row search">
-    <div class="col s12">
-      <%= form_tag('/', method: 'get') do  %>
-        <div class="row center-align">
-          <div class="input-field col s4 search" id="serch-field">
-            <i class="material-icons prefix">textsms</i>
-            <%= label :keyword,params[:keyword], "Keyword to search"%>
-            <%= text_field_tag  :keyword%>
-          </div>
-          <div class="input-field col s4 search" >
-            <i class="material-icons prefix">schedule</i>
-            <%= label :date,params[:date],"Date you wanna find"%>
-            <%=  text_field_tag :date,'', class:'datepicker' %>
-          </div>
-            <%= submit_tag "Serch", class:"waves-effect waves-light btn-large"%>
-          <div id="app">
-              {{ message }}
-          </div>
+   <div class="row search">
+      <div class="col s12">
+        <div class="top-container">
+          <%= form_tag('/', method: 'get') do  %>
+            <div class="row center-align">
+              <div class="input-field col s4 search" id="serch-field">
+                <i class="material-icons prefix white-text">textsms</i>
+                <%= label :keyword,params[:keyword], "Keyword to search"%>
+                <%= text_field_tag  :keyword%>
+              </div>
+              <div class="input-field col s4 search" >
+                <i class="material-icons prefix white-text">schedule</i>
+                <%= label :date,params[:date],"Date you wanna find"%>
+                <%=  text_field_tag :date,'', class:'datepicker white-text' %>
+              </div>
+              <%= submit_tag "Serch", class:"btn-floating btn-large cyan pulse"%>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
 
-
-
-
-<%= yield %>
+    <div class="coin-container" id="app">
+      <%= yield %>
+    </div>
 <script>
   // カレンダー選択の処理
   $(function() {

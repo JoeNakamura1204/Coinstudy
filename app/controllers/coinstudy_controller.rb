@@ -57,39 +57,6 @@ class CoinstudyController < ApplicationController
     return infos
     end
 
-  #eventonからの取得
-    # def eventon(ym, word)
-    #   result = get_json("https://eventon.jp/api/events.json?keyword=#{word}&ym=#{ym}&limit=100")
-    #   puts "eventon #{result["count"]}"
-    #   infos = []
-    #   result["events"].each do |val|
-    #     infos << {
-    #       "title" => val["title"],
-    #       "started_at" => val["started_at"],
-    #       "event_url" => val["event_url"],
-    #       "address" => val["address"] + " " + val["place"]
-    #     }
-    #   end
-    #   return infos
-    # end
-
-  #atndからの取得
-    def atnd(ym, word)
-      result = get_json("https://api.atnd.org/events/?format=json&keyword=#{word}&ym=#{ym}&count=100")
-      puts "ATND #{result["results_returned"]}"
-      infos = []
-      result["events"].each do |row|
-        val = row["event"]
-        infos << {
-          "title" => val["title"],
-          "started_at" => val["started_at"],
-          "event_url" => val["event_url"],
-          "address" => val["address"] + " " + val["place"]
-        }
-      end
-      return infos
-    end
-
   #取得したデータを集約する
    def get_events(year, month, word)
 
@@ -98,11 +65,8 @@ class CoinstudyController < ApplicationController
 
       infos = []
       eventonnumber =
-      # infos += eventon(ym, word)
       infos += doorkeeper(year, month, word)
       infos += connpass(ym, word)
-      infos += atnd(ym, word)
-      # infos += zusaar(ym, word)
 
       puts "Total #{infos.length}"
       return infos

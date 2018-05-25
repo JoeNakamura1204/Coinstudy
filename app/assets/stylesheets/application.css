@@ -14,17 +14,21 @@
  *= require_self
  */
 body{
-  padding: 3rem;
   box-sizing: border-box
+}
+.coin-container{
+  padding: 2rem;
+  margin:0px;
+  width: 100%;
 }
 /* navbar */
 
-.brand-logo.right{
-  margin-right: 2rem;
+.brand-logo{
+  margin-left: 3rem;
 }
 
-.left.hide-on-med-and-down > li >a{
-  padding: 0 2rem;
+.right.hide-on-med-and-dow > li >a{
+  padding: 0 3rem;
 }
 .row.search{
   display: flex;
@@ -44,9 +48,20 @@ body{
 }
 
 .nav-wrapper{
-  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+ background: #C9CCD3;
+ background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: lighten;
 }
 
+/* top-container */
+.top-container{
+ /* height:40%;
+  background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);*/
+}
+.row.center-align{
+  height: 500px;
+  background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+}
 .col.s12.m6.event-card{
   margin:0 auto;
 }
@@ -54,14 +69,22 @@ body{
   margin-left:2rem;
   margin-top:5rem;
 }
+.input-field.col> label{
+  color: white;
+  border-bottom: white;
+}
 #serch-field{
    margin-left:7rem;
 }
-.waves-effect.waves-light.btn-large{
+input#keyword, input#date{
+  border-bottom: solid 1px white;
+}
+.btn-floating.btn-large.cyan.pulse{
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   position: relative;
   margin-top: 5rem;
   margin-bottom: 1rem;
+
 }
 
 .card-content.grey-text > p .material-icons.prefix{
