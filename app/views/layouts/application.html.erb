@@ -13,6 +13,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="loader">
+    <div class="loader bars" id="load">
+      <div class="bars">
+          <div class="bas bar"></div>
+          <div class="bas bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+      </div>
+    </div>
+
+    <div class="loader loader--reflect">
+      <div class="bars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- nevbar -->
   <nav>
     <div class="nav-wrapper">
@@ -28,23 +61,31 @@
       <div class="col s12">
         <div class="top-container">
           <%= form_tag('/', method: 'get') do  %>
-            <div class="row center-align">
-              <div class="input-field col s4 search" id="serch-field">
-                <i class="material-icons prefix white-text">textsms</i>
-                <%= label :keyword,params[:keyword], "Keyword to search"%>
-                <%= text_field_tag  :keyword%>
-              </div>
-              <div class="input-field col s4 search" >
-                <i class="material-icons prefix white-text">schedule</i>
-                <%= label :date,params[:date],"Date you wanna find"%>
-                <%=  text_field_tag :date,'', class:'datepicker white-text' %>
-              </div>
-              <%= submit_tag "Serch", class:"btn-floating btn-large cyan pulse"%>
-            </div>
-          <% end %>
+          <div class="row center-align">
+             <div class="forms">
+              <p>
+                <div class="input-field col search">
+                  <i class="material-icons prefix white-text">textsms</i>
+                  <%= label :keyword,params[:keyword], "Keyword to search"%>
+                  <%= text_field_tag  :keyword%>
+                </div>
+              </p>
+              <p>
+                <div class="input-field col search" >
+                  <i class="material-icons prefix white-text">schedule</i>
+                  <%= label :date,params[:date],"Date you wanna find"%>
+                  <%=  text_field_tag :date,'', class:'datepicker white-text' %>
+                </div>
+              </p>
+              <%= submit_tag "Serch", class:"btn waves-effect waves-light"%>
+          </div>
+        <% end %>
+          </div>
         </div>
       </div>
     </div>
+
+
 
     <div class="coin-container" id="app">
       <%= yield %>
@@ -52,20 +93,26 @@
 <script>
   // カレンダー選択の処理
   $(function() {
-  var h = $(window).height();
+      var h = $(window).height();
 
-  $('#wrap').css('display','none');
-  $('#loader-bg ,#loader').height(h).css('display','block');
-});
-// ローディングの処理
-$(window).load(function () { //全ての読み込みが完了したら実行
-  $('#loader-bg').delay(900).fadeOut(800);
-  $('#loader').delay(600).fadeOut(300);
-  $('#wrap').css('display', 'block');
-});
+      $('#wrap').css('display','none');
+      $('#loader-bg ,#loader').height(h).css('display','block');
+  });
+
+  $(window).load(function () { //全ての読み込みが完了したら実行
+    $('#loader-bg').delay(900).fadeOut(800);
+    $('#loader').delay(600).fadeOut(300);
+    $('#wrap').css('display', 'block');
+  });
     $(document).ready(function(){
     $('.datepicker').datepicker();
   });
+
+//すべての要素が読み込み終わったら、ローディング画面を非表示にする
+$(window).load(function(){
+  $(".loader").fadeOut();
+});
+
 
   var app = new Vue({
   el: '#app',
