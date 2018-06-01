@@ -8,7 +8,8 @@ class CoinstudyController < ApplicationController
   def index
 
     # keyword = params[:keyword]
-    keyword = "blockchain"
+    keyword1 = "blockchain"
+    keyword2 = "仮想通貨"
     date = params[:date]
     now = Time.now
 
@@ -19,8 +20,8 @@ class CoinstudyController < ApplicationController
     end
 
   #connpassからの取得
-    def connpass(word,ym)
-      result = get_json("https://connpass.com/api/v1/event/?keyword=#{word}&ym=#{ym}&count=100")
+    def connpass(word1,word2,ym)
+      result = get_json("https://connpass.com/api/v1/event/?keyword_or=#{word1}&keyword_or=#{word2}&ym=#{ym}&order=2&count=100")
 
       puts "connpass #{result["results_available"]}, #{result["results_returned"]}"
 
@@ -58,15 +59,15 @@ class CoinstudyController < ApplicationController
     end
 
   #取得したデータを集約する
-   def get_events(year, month, word)
+   def get_events(year, month, word1,word2)
 
       ym = sprintf("%04d%02d", year, month)
       puts "[#{ym}]"
 
       infos = []
       eventonnumber =
-      infos += doorkeeper(year, month, word)
-      infos += connpass(ym, word)
+      infos += doorkeeper(year, month, word1)
+      infos += connpass(ym, word1,word2)
 
       puts "Total #{infos.length}"
       return infos
@@ -92,8 +93,8 @@ class CoinstudyController < ApplicationController
       @now = y[0]
     end
 
-    @keyword = keyword
-    @events = Kaminari.paginate_array(get_events(selected_year, selected_month, keyword)).page(params[:page]).per(10)
+    # @keyword = keyword
+    @events = Kaminari.paginate_array(get_events(selected_year, selected_month, keyword1,keyword2)).page(params[:page]).per(10)
   end
 
 end

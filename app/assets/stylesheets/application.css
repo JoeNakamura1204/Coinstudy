@@ -17,7 +17,6 @@ body{
   box-sizing: border-box
 }
 .coin-container{
-  padding: 2rem;
   margin:0px;
   width: 100%;
 }
@@ -28,11 +27,15 @@ html, body{
   height: 100%;
 }
 
-/* navbar */
-
-.brand-logo{
-  margin-left: 3rem;
+.logo{
+  color: white;
+  font-size: 2vw;
+  position: absolute;
+  top: 20px;
+  left: 41px;
 }
+
+/* navbar */
 
 .right.hide-on-med-and-dow > li >a{
   padding: 0 3rem;
@@ -53,9 +56,8 @@ html, body{
   display: block;
   margin:0 auto;
 }
-
 .nav-wrapper{
-  background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
   background-blend-mode: lighten;
 }
 
@@ -65,18 +67,36 @@ html, body{
   background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);*/
 }
 
+.top-sentence{
+  color: white;
+  font-size: 1.5vw;
+  position: relative;
+  top:40%;
+ font-family: 'klee'
+}
+
+i.material-icons{
+  top:7px;
+}
+form{
+  width: 100%;
+  text-align: center;
+}
 .forms{
-  position: absolute;
-  width: 30rem;
-  height: 20rem;
-  bottom:2rem;
-  left:6rem;
+  margin:0 auto;
+  text-align:center;
+  border-radius: 40px;
+ /* background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);*/
+  width: 20rem;
+  height: 14rem;
+  bottom:8rem;
+  left:7rem;
   display:inline-block;
 }
 
 .row.center-align{
   position: relative;
-  height: 500px;
+  height: 300px;
   background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
 }
 .col.s12.m6.event-card{
@@ -84,7 +104,7 @@ html, body{
 }
 .input-field.col.search{
   position: relative;
-  width: 80%;
+  width: 90%;
 }
 .input-field.col> label{
   color: white;
@@ -92,16 +112,16 @@ html, body{
 }
 
 input#keyword, input#date{
+  left:5px;
   border-bottom: solid 1px white;
 }
 .btn.waves-effect.waves-light{
   background-image: linear-gradient(-225deg, #DFFFCD 0%, #90F9C4 48%, #39F3BB 100%);
   position: relative;
   border-radius: 20px;
-  width: 20rem;
+  width: 50%;
   height: 3rem;
   padding:5px;
-  right:15px;
 }
 
 .card-content.grey-text > p .material-icons.prefix{
@@ -138,6 +158,29 @@ input#keyword, input#date{
   background: linear-gradient(0deg, rgba(238, 238, 238, 1), rgba(238, 238, 238, 1) 20%, rgba(238, 238, 238, 0.3));
 }
 
+/* footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.link-icon{
+  position: relative;
+  top:7px;
+}
+
+.footer-copyright{
+    color: white;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+}
 
 /* The bar */
 .bars{

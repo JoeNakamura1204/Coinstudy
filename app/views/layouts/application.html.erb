@@ -46,50 +46,17 @@
 
   </div>
 
-  <!-- nevbar -->
-  <nav>
-    <div class="nav-wrapper">
-      <%= link_to "Coinstudy", root_path, class: :"brand-logo" %>
-      <ul id="nav-mobile" class="right hide-on-med-and-dow">
-        <li><%= link_to "About ", about_path, class: :"" %></li>
-        <li><%= link_to "Hi ", root_path, class: :"" %></li>
-      </ul>
-    </div>
-  </nav>
-
-   <div class="row search">
-      <div class="col s12">
-        <div class="top-container">
-          <%= form_tag('/', method: 'get') do  %>
-          <div class="row center-align">
-             <div class="forms">
-              <p>
-                <div class="input-field col search">
-                  <i class="material-icons prefix white-text">textsms</i>
-                  <%= label :keyword,params[:keyword], "Keyword to search"%>
-                  <%= text_field_tag  :keyword%>
-                </div>
-              </p>
-              <p>
-                <div class="input-field col search" >
-                  <i class="material-icons prefix white-text">schedule</i>
-                  <%= label :date,params[:date],"Date you wanna find"%>
-                  <%=  text_field_tag :date,'', class:'datepicker white-text' %>
-                </div>
-              </p>
-              <%= submit_tag "Serch", class:"btn waves-effect waves-light"%>
-          </div>
-        <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
     <div class="coin-container" id="app">
-      <%= yield %>
+        <%= yield %>
+         <footer >
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Coin Study
+            </div>
+          </div>
+        </footer>
     </div>
+
 <script>
   // カレンダー選択の処理
   $(function() {
